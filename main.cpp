@@ -5,12 +5,13 @@
 #include <stdexcept>
 #include <cstdlib>
 #include <cstring>
+#include <vector>
 
 const uint32_t WIDTH = 800, HEIGHT = 600;
 
 const std::vector<const char*> validationLayers = {
 	"VK_LAYER_KHRONOS_validation"
-}
+};
 
 #ifdef NDEBUG
 	const bool enableValidationLayers = false;
@@ -84,7 +85,7 @@ private:
 	    glfwTerminate();
     }
 
-	void checkValidationLayerSupport() {
+	bool checkValidationLayerSupport() {
 		uint32_t layerCount;
 		vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
 
